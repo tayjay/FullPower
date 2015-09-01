@@ -6,4 +6,9 @@ package com.tayjay.fullpower.proxy;
 public class ServerProxy extends CommonProxy
 {
 
+    @Override
+    public void registerKeyBindings()
+    {
+        // NOOP No Operation
+    }
 }

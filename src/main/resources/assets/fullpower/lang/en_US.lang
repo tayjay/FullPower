@@ -1,2 +1,19 @@
+#en_US Localization File
+
+#Keys Localization
+keys.fullpower.category=Full Power
+keys.fullpower.charge=Charge
+keys.fullpower.release=Release
+
+#Creative Tabs Localizations
+itemGroup.fullpower= Full Power
+
 # Item Localization
 item.fullpower:debugTool.name=Debug Tool
+item.fullpower:effectTool.name=Effect Tool
+
+#Block Localization
+tile.fullpower:areaEffect.name=Area Effect
+
+
+

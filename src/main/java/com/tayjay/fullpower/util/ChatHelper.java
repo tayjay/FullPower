@@ -7,7 +7,8 @@ import net.minecraft.util.ChatComponentText;
 /**
  * Created by Taylar on 30/08/2015.
  */
-public class ChatHelper {
+public class ChatHelper
+{
 
     public static void send(String msg) //Send to world
     {

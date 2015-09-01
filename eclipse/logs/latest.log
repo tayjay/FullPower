@@ -1,43 +1,11 @@
-[12:10:12] [main/INFO]: Setting user: Player52
-[12:10:20] [main/INFO]: Setting user: Player679
-[12:10[12:10:27] [Client thread/INFO]: Reloading Resour[12:10:31] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Full Power
-[12:10:32] [Sound Library Loader/INFO]: Sound engine started
-[12:10:34] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
-[12:10:34] [Client thread/INFO]: Created: 16x16 textures/items-atlas
-[12:10:34] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Full Power
-[12:10:34] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[12:10:34] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[12:10:35] [S[12:10:35] [Server thread/INFO]: Starting integra[12:10:50] [Client thread/INFO]: Connecting to 192.168.1.74, 58374
-[12:11:17] [Client thread/INFO]: Stopping!
-ead/INFO]: Preparing start region for level 0
-[12:10:36] [Server thread/INFO]: Changing view distance to 12, from 10
-[12:10:37] [Server thread/INFO]: Player52[local:E:c1ce5449] logged in with entity id 161 at (513.9906469916888, 4.0, 353.76020258999296)
-[12:10:37] [Server thread/INFO]: Player52 joined the game
-[12:10:39] [Client thread/INFO]: [CHAT] grass
-[12:10:41] [Server thread/INFO]: Saving and pausing game...
-[12:10:41] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[12:10:41] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
-[12:10:41] [Server thread/INFO]: Saving chunks for level 'New World'/The End
-[12:10:48] [Client thread/INFO]: Started on 58374
-[12:10:48] [Client thread/INFO]: [CHAT] Local game hosted on port 58374
-[12:10:52] [User Authenticator #1/WARN]: Failed to verify username but will let them in anyway!
-[12:10:52] [Server thread/INFO]: Player679[/192.168.1.74:58392] logged in with entity id 26684 at (511.5, 4.0, 369.5)
-[12:10:52] [Server thread/INFO]: Player679 joined the game
-[12:10:52] [Client thread/INFO]: [CHAT] Player679 joined the game
-[12:10:54] [Client thread/INFO]: [CHAT] air
-[12:10:54] [Client thread/INFO]: [CHAT] air
-[12:10:55] [Client thread/INFO]: [CHAT] air
-[12:10:56] [Client thread/INFO]: [CHAT] grass
-[12:11:00] [Client thread/INFO]: [CHAT] bedrock
-[12:11:02] [Client thread/INFO]: [CHAT] bedrock
-[12:11:02] [Client thread/INFO]: [CHAT] bedrock
-[12:11:03] [Client thread/INFO]: [CHAT] bedrock
-[12:11:04] [Client thread/INFO]: [CHAT] air
-[12:11:05] [Client thread/INFO]: [CHAT] air
-[12:11:14] [Server thread/INFO]: Stopping server
-[12:11:14] [Server thread/INFO]: Saving players
-[12:11:14] [Server thread/INFO]: Saving worlds
-[12:11:14] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[12:11:14] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
-[12:11:14] [Server thread/INFO]: Saving chunks for level 'New World'/The End
-[12:11:18] [Client thread/INFO]: Stopping!
+[12:29:59] [main/INFO]: Setting user: tayjay
+[12:30:01] [Client thread/INFO]: LWJGL Version: 2.9.1
+[12:30:09] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Full Power
+[12:30:10] [Sound Library Loader/INFO]: Sound engine started
+[12:30:12] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[12:30:12] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[12:30:12] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Full Power
+[12:30:12] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[12:30:12] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[12:30:13] [Sound Library Loader/INFO]: Sound engine started
+[12:31:05] [Client thread/INFO]: Stopping!

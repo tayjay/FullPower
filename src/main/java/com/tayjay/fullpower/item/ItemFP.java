@@ -1,5 +1,6 @@
 package com.tayjay.fullpower.item;
 
+import com.tayjay.fullpower.creativetab.CreativeTabFP;
 import com.tayjay.fullpower.reference.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -15,6 +16,7 @@ public class ItemFP extends Item
     public ItemFP()
     {
         super();
+        this.setCreativeTab(CreativeTabFP.FP_TAB);
     }
 
     @Override

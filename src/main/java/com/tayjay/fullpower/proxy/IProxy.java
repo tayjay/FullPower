@@ -5,5 +5,5 @@ package com.tayjay.fullpower.proxy;
  */
 public interface IProxy
 {
-
+    public abstract void registerKeyBindings();
 }

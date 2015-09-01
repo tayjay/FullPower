@@ -17,7 +17,8 @@ public class ConfigHandler
 
     public static void init(File configFile)
     {
-        if(configuration == null) {
+        if (configuration == null)
+        {
             //Create the configuration object from the given configuration file.
             configuration = new Configuration(configFile);
             loadConfig();
@@ -27,7 +28,7 @@ public class ConfigHandler
     @SubscribeEvent
     public void onConfigChangedEvent(ConfigChangedEvent event)
     {
-        if(event.modID.equalsIgnoreCase(Reference.MOD_ID))
+        if (event.modID.equalsIgnoreCase(Reference.MOD_ID))
         {
             //resync configs
             loadConfig();
@@ -38,7 +39,7 @@ public class ConfigHandler
     {
         testValue = configuration.getBoolean("configValue", Configuration.CATEGORY_GENERAL, false, "This is an example config value.");
 
-        if(configuration.hasChanged())
+        if (configuration.hasChanged())
         {
             configuration.save();
         }
