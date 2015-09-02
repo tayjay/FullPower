@@ -1,6 +1,14 @@
 package com.tayjay.fullpower.block;
 
 
+import com.tayjay.fullpower.init.ModBlocks;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.effect.EntityWeatherEffect;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
 /**
  * Created by Taylar on 31/08/2015.
  * <p/>
@@ -14,6 +22,19 @@ public class BlockAreaEffect extends BlockFP
         super();
         this.setBlockName("areaEffect");
         this.setBlockTextureName("areaEffect");
+    }
+
+
+
+
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int side, float xpos, float ypos, float zpos)
+    {
+
+        if(world.isAirBlock(x,y+1,z)) world.setBlock(x, y + 1, z, ModBlocks.areaEffect);
+
+        EntityLightningBolt lightning = new EntityLightningBolt(world, x,y,z);
+        world.spawnEntityInWorld(lightning);
+        return true; // True = Cant place on block, False = Can place on block
 
     }
     /* PUT THIS IN A TILE ENTITY

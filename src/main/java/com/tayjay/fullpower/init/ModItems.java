@@ -1,5 +1,6 @@
 package com.tayjay.fullpower.init;
 
+import com.tayjay.fullpower.item.ItemCommandScroll;
 import com.tayjay.fullpower.item.ItemDebugTool;
 import com.tayjay.fullpower.item.ItemEffectTool;
 import com.tayjay.fullpower.item.ItemFP;
@@ -15,10 +16,12 @@ public class ModItems
 {
     public static final ItemFP debugTool = new ItemDebugTool();
     public static final ItemFP effectTool = new ItemEffectTool();
+    public static final ItemFP commandScroll = new ItemCommandScroll();
 
     public static void init()
     {
         GameRegistry.registerItem(debugTool, "debugTool");
         GameRegistry.registerItem(effectTool, "effectTool");
+        GameRegistry.registerItem(commandScroll, "commandScroll");
     }
 }

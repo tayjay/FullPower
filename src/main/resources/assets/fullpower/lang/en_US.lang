@@ -11,6 +11,7 @@ itemGroup.fullpower= Full Power
 # Item Localization
 item.fullpower:debugTool.name=Debug Tool
 item.fullpower:effectTool.name=Effect Tool
+item.fullpower:commandScroll.name=§6§lCommand Scroll§r
 
 #Block Localization
 tile.fullpower:areaEffect.name=Area Effect

@@ -1,24 +1,24 @@
 ## gradle
-/.gradle
-/build
-/libs
+.gradle
+build
+libs
 
 ## ForgeGradle
-/run
-/runClean
+run
+runClean
 
 ## eclipse
-/eclipse
-/.settings
-/.metadata
-/.classpath
-/.project
-/bin
+eclipse
+.settings
+.metadata
+.classpath
+.project
+bin
 
 ## intellij
-/out
-/.idea
-/*.iml
-/*.ipr
-/*.iws
-/atlassian-ide-plugin.xml
+out
+.idea
+*.iml
+*.ipr
+*.iws
+atlassian-ide-plugin.xml
