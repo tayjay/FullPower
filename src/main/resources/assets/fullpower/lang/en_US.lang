@@ -12,6 +12,7 @@ itemGroup.fullpower= Full Power
 item.fullpower:debugTool.name=Debug Tool
 item.fullpower:effectTool.name=Effect Tool
 item.fullpower:commandScroll.name=§6§lCommand Scroll§r
+item.fullpower:instantTool.name=Instant-Mining Tool
 
 #Block Localization
 tile.fullpower:areaEffect.name=Area Effect

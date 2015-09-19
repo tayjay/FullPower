@@ -5,7 +5,7 @@ package com.tayjay.fullpower.reference;
  */
 public final class Names
 {
-    public static final class  Keys
+    public static final class Keys
     {
         public static final String CATEGORY = "keys.fullpower.category";
         public static final String CHARGE = "keys.fullpower.charge";

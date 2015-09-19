@@ -1,9 +1,5 @@
 package com.tayjay.fullpower.init;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-
 /**
  * Created by Taylar on 01/09/2015.
  */

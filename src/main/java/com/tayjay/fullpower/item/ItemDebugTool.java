@@ -7,11 +7,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
@@ -47,24 +45,26 @@ public class ItemDebugTool extends ItemFP
         MinecraftServer server = MinecraftServer.getServer();
         if (coolDown == 0)
         {
-            ChatHelper.send(entity,entity.toString());
-            if(entity instanceof EntityClientPlayerMP)
+            ChatHelper.send(entity, entity.toString());
+            if (entity instanceof EntityClientPlayerMP)
             {
                 EntityClientPlayerMP player = (EntityClientPlayerMP) entity;
                 ChatHelper.send("Entered onItemRightClick");
                 Block blockLookingAt = getBlockLookingAt(world, player);
                 Entity entityLookingAt = getEntityLookingAt(world, player);
 
-                EntityItem droppedItem = new EntityItem(world,blockX,blockY+2,blockZ,new ItemStack(Items.diamond,1,1));
-                if(!player.worldObj.isRemote) //Server Side Only
+                EntityItem droppedItem = new EntityItem(world, blockX, blockY + 2, blockZ, new ItemStack(Items.diamond, 1, 1));
+                if (!player.worldObj.isRemote) //Server Side Only (LOOK AT COMMANDSCROLL TO GET ISREMOTE TO WORK
                 {
                     ChatHelper.send("Should drop item");
                     world.spawnEntityInWorld(droppedItem);
-                }else{
+                } else
+                {
                     ChatHelper.send("Not Dropping Item.");
                 }
-            }else{
-                ChatHelper.send(entity,"Entity not instance of EntityPlayerSP");
+            } else
+            {
+                ChatHelper.send(entity, "Entity not instance of EntityPlayerSP");
             }
 
 
@@ -131,10 +131,10 @@ public class ItemDebugTool extends ItemFP
      * Called each tick as long the item is on a player inventory. Uses by maps to check if is on a player hand and
      * update it's contents.
      */
-    public void onUpdate(ItemStack p_77663_1_, World p_77663_2_, Entity entity, int p_77663_4_, boolean p_77663_5_)
+    public void onUpdate(ItemStack itemStack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_)
     {
         if (coolDown > 0) --coolDown;
-
+        /*
         if (entity != null && entity instanceof EntityPlayer)
         {
             EntityPlayer player = (EntityPlayer) entity;
@@ -144,6 +144,7 @@ public class ItemDebugTool extends ItemFP
 
             }
         }
+        */
 
     }
 

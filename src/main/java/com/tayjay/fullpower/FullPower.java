@@ -65,7 +65,6 @@ public class FullPower
         FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
 
 
-
         LogHelper.info("Initialization Complete!");
     }
 
