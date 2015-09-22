@@ -19,7 +19,8 @@ public class RenderTick
     public void onRenderEvent(RenderBlockOverlayEvent event)
     {
         //LogHelper.info("In onRenderEvent!");
-        event.setCanceled(true);
+        if(minecraft.thePlayer.noClip)
+            event.setCanceled(true);
     }
 
 }

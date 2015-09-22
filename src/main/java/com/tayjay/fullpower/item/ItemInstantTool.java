@@ -1,5 +1,6 @@
 package com.tayjay.fullpower.item;
 
+import com.tayjay.fullpower.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -16,7 +17,7 @@ public class ItemInstantTool extends ItemFP
         super();
         this.setUnlocalizedName("instantTool");
         this.maxStackSize = 1;
-
+        ModItems.register(this);
     }
     /**
      * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return

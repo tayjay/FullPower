@@ -1,5 +1,6 @@
 package com.tayjay.fullpower.item;
 
+import com.tayjay.fullpower.init.ModItems;
 import com.tayjay.fullpower.util.ChatHelper;
 import com.tayjay.fullpower.util.LogHelper;
 import com.tayjay.fullpower.util.NBTHelper;
@@ -35,7 +36,7 @@ public class ItemCommandScroll extends ItemFP
         super();
         this.setUnlocalizedName("commandScroll");
         this.maxStackSize = 1;
-
+        ModItems.register(this);
     }
 
     /**

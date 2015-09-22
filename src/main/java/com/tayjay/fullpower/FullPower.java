@@ -2,12 +2,18 @@ package com.tayjay.fullpower;
 
 import com.tayjay.fullpower.client.gui.RenderTick;
 import com.tayjay.fullpower.client.handler.KeyInputEventHandler;
+import com.tayjay.fullpower.client.handler.KeyInputHandler;
+import com.tayjay.fullpower.client.handler.NoClipHandler;
 import com.tayjay.fullpower.command.CommandChat;
 import com.tayjay.fullpower.command.CommandNoClip;
+import com.tayjay.fullpower.command.CommandPing;
 import com.tayjay.fullpower.handler.ConfigHandler;
+import com.tayjay.fullpower.handler.TickHandler;
 import com.tayjay.fullpower.init.ModBlocks;
 import com.tayjay.fullpower.init.ModItems;
+import com.tayjay.fullpower.init.ModTileEntities;
 import com.tayjay.fullpower.init.Recipies;
+import com.tayjay.fullpower.network.NetworkHandler;
 import com.tayjay.fullpower.proxy.IProxy;
 import com.tayjay.fullpower.reference.Reference;
 import com.tayjay.fullpower.util.LogHelper;
@@ -39,6 +45,7 @@ public class FullPower
     {
         event.registerServerCommand(new CommandChat());
         event.registerServerCommand(new CommandNoClip());
+        event.registerServerCommand(new CommandPing());
 
     }
 
@@ -52,6 +59,9 @@ public class FullPower
 
         ModItems.init();
         ModBlocks.init();
+        ModTileEntities.init();
+
+        NetworkHandler.preInit();
         LogHelper.info("Pre-Initialization Complete!");
 
     }
@@ -61,9 +71,10 @@ public class FullPower
     {
 
         Recipies.init();
-        MinecraftForge.EVENT_BUS.register(new RenderTick()); // Handle Inside Block
-        FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
-
+        MinecraftForge.EVENT_BUS.register(new NoClipHandler()); // Handle Inside Block
+        FMLCommonHandler.instance().bus().register(new NoClipHandler());
+        FMLCommonHandler.instance().bus().register(new TickHandler());
+        FMLCommonHandler.instance().bus().register(new KeyInputHandler());
 
         LogHelper.info("Initialization Complete!");
     }

@@ -1,6 +1,8 @@
 package com.tayjay.fullpower.item;
 
 import com.tayjay.fullpower.creativetab.CreativeTabFP;
+import com.tayjay.fullpower.init.ModBlocks;
+import com.tayjay.fullpower.init.ModItems;
 import com.tayjay.fullpower.reference.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -17,7 +19,9 @@ public class ItemFP extends Item
     {
         super();
         this.setCreativeTab(CreativeTabFP.FP_TAB);
+
     }
+
 
     @Override
     public String getUnlocalizedName()
@@ -38,7 +42,7 @@ public class ItemFP extends Item
         itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
     }
 
-    protected String getUnwrappedUnlocalizedName(String unlocalizedName)
+    public String getUnwrappedUnlocalizedName(String unlocalizedName)
     {
         return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
     }

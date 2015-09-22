@@ -1,5 +1,6 @@
 package com.tayjay.fullpower.item;
 
+import com.tayjay.fullpower.init.ModItems;
 import com.tayjay.fullpower.util.ChatHelper;
 import com.tayjay.fullpower.util.LogHelper;
 import cpw.mods.fml.relauncher.Side;
@@ -28,7 +29,7 @@ public class ItemDebugTool extends ItemFP
         LogHelper.info("debugTool name: " + this.getUnlocalizedName());
         LogHelper.info("debugTool Texture: " + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
         this.maxStackSize = 1;
-
+        ModItems.register(this);
     }
 
     /*Block Looking At Coords*/ int blockX;

@@ -1,5 +1,6 @@
 package com.tayjay.fullpower.item;
 
+import com.tayjay.fullpower.init.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -15,7 +16,7 @@ public class ItemEffectTool extends ItemFP
     {
         super();
         this.setUnlocalizedName("effectTool");
-
+        ModItems.register(this);
 
     }
 

@@ -19,6 +19,7 @@ public class BlockAreaEffect extends BlockFP
         super();
         this.setBlockName("areaEffect");
         this.setBlockTextureName("areaEffect");
+        ModBlocks.register(this);
     }
 
 

@@ -4,6 +4,7 @@
 keys.fullpower.category=Full Power
 keys.fullpower.charge=Charge
 keys.fullpower.release=Release
+keys.fullpower.explode=Explode
 
 #Creative Tabs Localizations
 itemGroup.fullpower= Full Power
@@ -16,6 +17,7 @@ item.fullpower:instantTool.name=Instant-Mining Tool
 
 #Block Localization
 tile.fullpower:areaEffect.name=Area Effect
+tile.fullpower:solidDiamondGold.name=Solid §3Diamond§r §6Gold
 
 
 

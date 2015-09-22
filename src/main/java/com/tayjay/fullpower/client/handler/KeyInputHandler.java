@@ -1,35 +1,23 @@
 package com.tayjay.fullpower.client.handler;
 
 import com.tayjay.fullpower.client.settings.Keybindings;
-import com.tayjay.fullpower.reference.Key;
+import com.tayjay.fullpower.network.MessageExplode;
+import com.tayjay.fullpower.network.NetworkHandler;
 import com.tayjay.fullpower.util.LogHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent;
 
-
 /**
- * Created by Taylar on 01/09/2015.
+ * Created by tayjm_000 on 2015-09-19.
  */
-public class KeyInputEventHandler
+public class KeyInputHandler
 {
-    /*
-    private static Key getPressedKeyBinding()
-    {
-        if (Keybindings.charge.isPressed())
-        {
-            return Key.CHARGE;
-        } else if (Keybindings.release.isPressed())
-        {
-            return Key.RELEASE;
-        }
-
-        return Key.UNKNOWN;
-    }
     private Keybindings getPressedKey(){
         for(Keybindings key : Keybindings.values())
         {
             if(key.isPressed()) return key;
         }
+        return null;
     }
 
     @SubscribeEvent
@@ -42,9 +30,13 @@ public class KeyInputEventHandler
             {
                 case EXPLODE:
                     LogHelper.info("Boom!");
+                    NetworkHandler.sendToServer(new MessageExplode(3));
+                    break;
+                case EXPLODE_BIG:
+                    LogHelper.info("Big Boom!");
+                    NetworkHandler.sendToServer(new MessageExplode(10));
                     break;
             }
         }
     }
-    */
 }
