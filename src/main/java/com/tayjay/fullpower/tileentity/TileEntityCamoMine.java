@@ -1,10 +1,14 @@
 package com.tayjay.fullpower.tileentity;
 
 import com.tayjay.fullpower.block.BlockFPTileEntity;
+import cpw.mods.fml.common.network.ByteBufUtils;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -14,9 +18,10 @@ import java.util.List;
 /**
  * Created by tayjm_000 on 2015-09-20.
  */
-public class TileEntityCamoMine extends TileEntity
+public class TileEntityCamoMine extends TileEntityFP
 {
     private int timer = 60;
+    private ItemStack camoStack;
     public TileEntityCamoMine()
     {
         super();
@@ -35,11 +40,45 @@ public class TileEntityCamoMine extends TileEntity
             }
         }
     }
+
+    public void setCamouflage(ItemStack stack)
+    {
+        camoStack = stack;
+        worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
+
+    }
+
+    public ItemStack getCamouflage()
+    {
+        return camoStack;
+    }
+
+    public void writeToPacket(ByteBuf buf)
+    {
+        ByteBufUtils.writeItemStack(buf,camoStack);
+    }
+
+    public void readFromPacket(ByteBuf buf)
+    {
+        camoStack = ByteBufUtils.readItemStack(buf);
+        worldObj.markBlockRangeForRenderUpdate(xCoord,yCoord,zCoord,xCoord,yCoord,zCoord);
+    }
+
+
     @Override
     public void readFromNBT(NBTTagCompound tag)
     {
         super.readFromNBT(tag);
         timer = tag.getInteger("timer");
+
+        if(tag.hasKey("camoStack"))
+        {
+            camoStack = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("camoStack"));
+        }
+        else
+        {
+            camoStack = null;
+        }
     }
 
     @Override
@@ -47,5 +86,12 @@ public class TileEntityCamoMine extends TileEntity
     {
         super.writeToNBT(tag);
         tag.setInteger("timer", timer);
+
+        if(camoStack!=null)
+        {
+            NBTTagCompound t = new NBTTagCompound();
+            camoStack.writeToNBT(t);
+            tag.setTag("camoStack", t);
+        }
     }
 }

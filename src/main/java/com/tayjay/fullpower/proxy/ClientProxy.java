@@ -4,6 +4,8 @@ import com.tayjay.fullpower.client.handler.KeyInputHandler;
 import com.tayjay.fullpower.client.settings.Keybindings;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 
 /**
  * Created by Taylar on 29/08/2015.
@@ -40,5 +42,11 @@ public class ClientProxy extends CommonProxy
     public void postInit()
     {
 
+    }
+
+    @Override
+    public EntityPlayer getClientPlayer()
+    {
+        return Minecraft.getMinecraft().thePlayer;
     }
 }

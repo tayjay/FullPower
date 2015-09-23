@@ -13,7 +13,9 @@ import com.tayjay.fullpower.init.ModBlocks;
 import com.tayjay.fullpower.init.ModItems;
 import com.tayjay.fullpower.init.ModTileEntities;
 import com.tayjay.fullpower.init.Recipies;
+import com.tayjay.fullpower.network.DescriptionHandler;
 import com.tayjay.fullpower.network.NetworkHandler;
+import com.tayjay.fullpower.proxy.CommonProxy;
 import com.tayjay.fullpower.proxy.IProxy;
 import com.tayjay.fullpower.reference.Reference;
 import com.tayjay.fullpower.util.LogHelper;
@@ -38,7 +40,7 @@ public class FullPower
     public static FullPower instance;
 
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
-    public static IProxy proxy;
+    public static CommonProxy proxy;
 
     @Mod.EventHandler
     public void onServerStarting(FMLServerStartingEvent event)
@@ -62,8 +64,9 @@ public class FullPower
         ModTileEntities.init();
 
         NetworkHandler.preInit();
-        LogHelper.info("Pre-Initialization Complete!");
+        DescriptionHandler.init();
 
+        LogHelper.info("Pre-Initialization Complete!");
     }
 
     @Mod.EventHandler

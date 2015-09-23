@@ -48,11 +48,6 @@ public class CommandNoClip extends CommandBase
             if(!entityPlayer.worldObj.isRemote)
             {
                 ChatHelper.send("THE WORLD IS NOT REMOTE");
-                //entityPlayerMP.noClip = !entityPlayerMP.noClip;
-                //mc.thePlayer.noClip = !mc.thePlayer.noClip;
-                //entityPlayerMP.capabilities.isFlying = true;
-                //mc.thePlayer.capabilities.isFlying = true;
-                //NoClipHandler.setNoClip(entityPlayerMP,true);
                 NoClipHandler.setNoClip(entityPlayer,entityPlayer.noClip);
 
             }else{
