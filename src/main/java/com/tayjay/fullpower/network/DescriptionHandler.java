@@ -20,7 +20,7 @@ public class DescriptionHandler extends SimpleChannelInboundHandler<FMLProxyPack
 {
     public static final String CHANNEL = Reference.MOD_ID+" Description";
 
-    static { caller();
+    static {
         NetworkRegistry.INSTANCE.newChannel(CHANNEL, new DescriptionHandler());
     }
 
@@ -29,11 +29,7 @@ public class DescriptionHandler extends SimpleChannelInboundHandler<FMLProxyPack
         //Does nothing here. Used to catch an exception
     }
 
-    public static void caller()
-    {
-        LogHelper.info("Hail fucking satan!!!" +
-                "");
-    }
+
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, FMLProxyPacket msg) throws Exception

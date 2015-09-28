@@ -18,6 +18,7 @@ item.fullpower:instantTool.name=Instant-Mining Tool
 #Block Localization
 tile.fullpower:areaEffect.name=Area Effect
 tile.fullpower:solidDiamondGold.name=Solid §3Diamond§r §6Gold
+tile.fullpower:camoMine.name=Camo Mine
 
 
 

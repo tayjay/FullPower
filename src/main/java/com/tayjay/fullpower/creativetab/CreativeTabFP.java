@@ -1,5 +1,6 @@
 package com.tayjay.fullpower.creativetab;
 
+import com.tayjay.fullpower.init.ModBlocks;
 import com.tayjay.fullpower.init.ModItems;
 import com.tayjay.fullpower.reference.Reference;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,7 +16,7 @@ public class CreativeTabFP
         @Override
         public Item getTabIconItem()
         {
-            return ModItems.debugTool;
+            return Item.getItemFromBlock(ModBlocks.diamondGold);
         }
 
     };

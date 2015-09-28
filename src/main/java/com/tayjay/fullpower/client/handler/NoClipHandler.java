@@ -47,11 +47,14 @@ public class NoClipHandler
         }
     }
 
+    /*
+        Hocked into the Render Event to allow NoClip players to see though walls.
+     */
     @SubscribeEvent
     public void onRenderEvent(RenderBlockOverlayEvent event)
     {
         //LogHelper.info("In onRenderEvent!");
-        //if(entityPlayer.noClip)
+        if(entityPlayer.noClip)
             event.setCanceled(true);
     }
 

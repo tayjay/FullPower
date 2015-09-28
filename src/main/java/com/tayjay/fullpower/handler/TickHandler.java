@@ -16,7 +16,7 @@ public class TickHandler
             event.player.capabilities.isFlying=true;
         }
     }
-
+/*
     //Called when the client ticks.
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
@@ -40,4 +40,5 @@ public class TickHandler
     public void onWorldTick(TickEvent.WorldTickEvent event) {
 
     }
+*/
 }

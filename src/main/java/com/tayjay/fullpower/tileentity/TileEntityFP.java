@@ -10,7 +10,7 @@ import net.minecraft.tileentity.TileEntity;
 /**
  * Created by tayjm_000 on 2015-09-23.
  */
-public class TileEntityFP extends TileEntity
+public abstract class TileEntityFP extends TileEntity
 {
 
     @Override
@@ -24,13 +24,8 @@ public class TileEntityFP extends TileEntity
         return new FMLProxyPacket(buf, DescriptionHandler.CHANNEL);
     }
 
-    protected void writeToPacket(ByteBuf buf)
-    {
+    protected abstract void writeToPacket(ByteBuf buf);
 
-    }
+    public abstract void readFromPacket(ByteBuf buf);
 
-    public void readFromPacket(ByteBuf buf)
-    {
-
-    }
 }
