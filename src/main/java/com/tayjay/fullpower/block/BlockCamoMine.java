@@ -1,5 +1,7 @@
 package com.tayjay.fullpower.block;
 
+import com.tayjay.fullpower.FullPower;
+import com.tayjay.fullpower.GuiHandler;
 import com.tayjay.fullpower.creativetab.CreativeTabFP;
 import com.tayjay.fullpower.init.ModBlocks;
 import com.tayjay.fullpower.reference.Names;
@@ -20,6 +22,8 @@ import net.minecraft.world.World;
 
 /**
  * Created by tayjm_000 on 2015-09-20.
+ *
+ * Most of the logic is in tileentity/TileEntityCamoMine
  */
 public class BlockCamoMine extends BlockFPTileEntity
 {
@@ -28,6 +32,7 @@ public class BlockCamoMine extends BlockFPTileEntity
         super();
         this.setBlockName(Names.Blocks.CAMO_MINE);
         this.setBlockTextureName(Names.Blocks.CAMO_MINE);
+        //Register this block
         ModBlocks.register(this);
         this.setCreativeTab(CreativeTabFP.FP_TAB);
     }
@@ -55,26 +60,31 @@ public class BlockCamoMine extends BlockFPTileEntity
     {
         if(!world.isRemote)
         {
-            TileEntityCamoMine te = (TileEntityCamoMine) world.getTileEntity(x, y, z);
-            if(te.getCamouflage(side) != null)
+            if(player.isSneaking())
             {
-                ItemStack camoStack = te.getCamouflage(side);
-                te.setCamouflage(null,side);
-                //camoStack.stackSize = 1;
-                EntityItem itemEntity = new EntityItem(world,x,y,z,camoStack);
-                LogHelper.info("StackSize="+camoStack.stackSize);
-                world.spawnEntityInWorld(itemEntity); //Tell world this item needs to be spawned
+                player.openGui(FullPower.instance, GuiHandler.GuiIDs.CAMO_MINE.ordinal(),world,x,y,z);
             }
-            else
-            {
-                ItemStack playerItem = player.getCurrentEquippedItem();
-                if (playerItem != null)
+                TileEntityCamoMine te = (TileEntityCamoMine) world.getTileEntity(x, y, z);
+                if(te.getCamouflage(side) != null)
                 {
-                    ItemStack camoStack = playerItem.splitStack(1); //Remove 1 from stack
-                    ChatHelper.send(camoStack.toString());
-                    te.setCamouflage(camoStack,side);
+                    ItemStack camoStack = te.getCamouflage(side);
+                    te.setCamouflage(null,side);
+                    EntityItem itemEntity = new EntityItem(world,x,y,z,camoStack);
+                    LogHelper.info("StackSize="+camoStack.stackSize);
+                    //Tell world this item needs to be spawned
+                    world.spawnEntityInWorld(itemEntity);
                 }
-            }
+                else
+                {
+                    ItemStack playerItem = player.getCurrentEquippedItem();
+                    if (playerItem != null)
+                    {
+                        ItemStack camoStack = playerItem.splitStack(1); //Remove 1 from stack
+                        ChatHelper.send(camoStack.toString());
+                        te.setCamouflage(camoStack,side);
+                    }
+                }
+
 
         }
         return true;

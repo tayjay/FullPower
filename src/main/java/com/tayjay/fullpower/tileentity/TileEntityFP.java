@@ -9,6 +9,8 @@ import net.minecraft.tileentity.TileEntity;
 
 /**
  * Created by tayjm_000 on 2015-09-23.
+ *
+ * Base Tile Entity
  */
 public abstract class TileEntityFP extends TileEntity
 {
@@ -28,4 +30,10 @@ public abstract class TileEntityFP extends TileEntity
 
     public abstract void readFromPacket(ByteBuf buf);
 
+    public void onGuiButtonPress(int id)
+    {
+
+    }
+
+    public void onGuiTextfieldUpdate(int id, String text){}
 }

@@ -10,6 +10,8 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 
 /**
  * Created by Taylar on 31/08/2015.
+ *
+ * The base for all Blocks in the mod.
  */
 public class BlockFP extends Block
 {
@@ -25,11 +27,13 @@ public class BlockFP extends Block
         this.setCreativeTab(CreativeTabFP.FP_TAB);
     }
 
+
     @Override
     public String getUnlocalizedName()
     {
         return String.format("tile.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
     }
+
 
     @Override
     @SideOnly(Side.CLIENT)
@@ -37,6 +41,7 @@ public class BlockFP extends Block
     {
         blockIcon = iconRegister.registerIcon(String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName())));
     }
+
 
     public String getUnwrappedUnlocalizedName(String unlocalizedName)
     {

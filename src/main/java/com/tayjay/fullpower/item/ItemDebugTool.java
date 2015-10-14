@@ -1,6 +1,7 @@
 package com.tayjay.fullpower.item;
 
 import com.tayjay.fullpower.init.ModItems;
+import com.tayjay.fullpower.reference.Names;
 import com.tayjay.fullpower.util.ChatHelper;
 import com.tayjay.fullpower.util.LogHelper;
 import cpw.mods.fml.relauncher.Side;
@@ -25,7 +26,7 @@ public class ItemDebugTool extends ItemFP
     public ItemDebugTool()
     {
         super();
-        this.setUnlocalizedName("debugTool");
+        this.setUnlocalizedName(Names.Items.DEBUG_TOOL);
         LogHelper.info("debugTool name: " + this.getUnlocalizedName());
         LogHelper.info("debugTool Texture: " + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
         this.maxStackSize = 1;

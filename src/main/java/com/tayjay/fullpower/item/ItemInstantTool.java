@@ -1,6 +1,7 @@
 package com.tayjay.fullpower.item;
 
 import com.tayjay.fullpower.init.ModItems;
+import com.tayjay.fullpower.reference.Names;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -15,13 +16,17 @@ public class ItemInstantTool extends ItemFP
     public ItemInstantTool()
     {
         super();
-        this.setUnlocalizedName("instantTool");
+        this.setUnlocalizedName(Names.Items.INSTANT_TOOL);
         this.maxStackSize = 1;
         ModItems.register(this);
     }
     /**
      * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
-     * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
+     * <ul><li>True if something happen</li>
+     * <li>false if it don't</li></ul>
+     * <p>
+     * <b>This is for ITEMS, not BLOCKS</b>
+     *
      */
     public boolean onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, World world, int x, int y, int z, int side, float sidex, float sidey, float sidez)
     {
@@ -32,9 +37,5 @@ public class ItemInstantTool extends ItemFP
 
         return false;
     }
-
-    /**
-     * Drops the specified block items
-     */
 
 }

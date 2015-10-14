@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderBlockOverlayEvent;
 
@@ -33,7 +34,7 @@ public class NoClipHandler
     }
 
     @SubscribeEvent
-    public void onGameTick(TickEvent.PlayerTickEvent event)
+    public void onPlayerTick(TickEvent.PlayerTickEvent event)
     {
         if(firstTick)
         {
@@ -44,6 +45,7 @@ public class NoClipHandler
         if(this.entityPlayer!=null && this.entityPlayer.noClip)
         {
             event.player.capabilities.isFlying = true;
+            event.player.addPotionEffect(new PotionEffect(16,1600,0));
         }
     }
 
@@ -61,12 +63,24 @@ public class NoClipHandler
     public static void setNoClip(EntityPlayer player, boolean noClip)
     {
         entityPlayer = player;
-        if(!player.worldObj.isRemote)
+        if (!player.worldObj.isRemote)
         {
             ChatHelper.send(player, "NoClip: " + player.noClip);
         }
         player.noClip = noClip;
+        if (!player.noClip) // Turning NoClip off
+        {
+            player.capabilities.isFlying = false;
+            player.removePotionEffect(16);
+            //player.capabilities.setFlySpeed(3.0F);
+            if (!player.capabilities.isCreativeMode)
+            {
+                player.capabilities.disableDamage = false;
+            }
+        } else // Turning No Clip on
+        {
+            player.capabilities.disableDamage = true;
+        }
     }
-
 
 }

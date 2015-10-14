@@ -20,6 +20,9 @@ public class DescriptionHandler extends SimpleChannelInboundHandler<FMLProxyPack
 {
     public static final String CHANNEL = Reference.MOD_ID+" Description";
 
+    /**
+     * Create a new channel to carry a DescriptionHandler Packet
+     */
     static {
         NetworkRegistry.INSTANCE.newChannel(CHANNEL, new DescriptionHandler());
     }

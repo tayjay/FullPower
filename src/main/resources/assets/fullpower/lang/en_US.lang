@@ -19,6 +19,9 @@ item.fullpower:instantTool.name=Instant-Mining Tool
 tile.fullpower:areaEffect.name=Area Effect
 tile.fullpower:solidDiamondGold.name=Solid §3Diamond§r §6Gold
 tile.fullpower:camoMine.name=Camo Mine
+tile.fullpower:chatBox.name=Chat Box
 
-
-
+#GUI Localization
+gui.fullpower.camoMine.timer=Timer:%s ticks
+gui.fullpower.camoMine.button.reset=Reset
+gui.fullpower.camoMine.button.restart=Restart

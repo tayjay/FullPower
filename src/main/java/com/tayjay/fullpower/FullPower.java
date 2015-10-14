@@ -26,22 +26,37 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import net.minecraftforge.common.MinecraftForge;
 
 
 /**
  * Created by Taylar on 29/08/2015.
+ *
+ * Main Class for the mod.
  */
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, guiFactory = Reference.GUI_FACTORY_CLASS)
 public class FullPower
 {
 
+    /**
+     * Make a mod Instance
+     */
     @Mod.Instance
     public static FullPower instance;
 
+    /**
+     * Create the sided proxy.
+     */
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
     public static CommonProxy proxy;
 
+    /**
+     * Server starting event.
+     * Register server components.
+     *
+     * @param event
+     */
     @Mod.EventHandler
     public void onServerStarting(FMLServerStartingEvent event)
     {
@@ -51,24 +66,37 @@ public class FullPower
 
     }
 
+    /**
+     * Pre-Initialization Event
+     * Load Items,Blocks, TileEntities, Networking
+     *
+     * @param event
+     */
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         ConfigHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigHandler());
 
-        proxy.registerKeyBindings();
-
+        //proxy.registerKeyBindings();
+        proxy.preInit();
         ModItems.init();
         ModBlocks.init();
         ModTileEntities.init();
 
         NetworkHandler.preInit();
         DescriptionHandler.init();
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance,new GuiHandler());
 
         LogHelper.info("Pre-Initialization Complete!");
     }
 
+    /**
+     * Initialization Event
+     * Register Event Handlers, Recipes.
+     *
+     * @param event
+     */
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
@@ -82,6 +110,12 @@ public class FullPower
         LogHelper.info("Initialization Complete!");
     }
 
+    /**
+     * Post-Initialization
+     * Load after everything else.
+     *
+     * @param event
+     */
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {

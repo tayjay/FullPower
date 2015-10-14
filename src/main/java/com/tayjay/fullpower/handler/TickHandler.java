@@ -8,6 +8,7 @@ import cpw.mods.fml.common.gameevent.TickEvent;
  */
 public class TickHandler
 {
+/*
     //Called whenever the player is updated or ticked.
     @SubscribeEvent
     public void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -16,7 +17,7 @@ public class TickHandler
             event.player.capabilities.isFlying=true;
         }
     }
-/*
+
     //Called when the client ticks.
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {

@@ -1,6 +1,8 @@
 package com.tayjay.fullpower.tileentity;
 
 import com.tayjay.fullpower.init.ModBlocks;
+import com.tayjay.fullpower.init.ModTileEntities;
+import com.tayjay.fullpower.reference.Names;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
@@ -21,7 +23,7 @@ import java.util.List;
 public class TileEntityCamoMine extends TileEntityFP implements ISidedInventory
 {
     private int timer = 60;
-    private String owner = "tayjay";
+    private String target;
     private ItemStack[] camoStacks = new ItemStack[6];
 
     public TileEntityCamoMine()
@@ -29,27 +31,91 @@ public class TileEntityCamoMine extends TileEntityFP implements ISidedInventory
         super();
     }
 
+
+    @Override
+    public void updateEntity(){
+        if(timer > 0) timer--;
+        if(timer == 0 && !worldObj.isRemote) {
+            List<Entity> entities = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord - 1, yCoord - 1, zCoord - 1, xCoord + 2, yCoord + 2, zCoord + 2));
+            for(Entity entity : entities) {
+                if(target.equals("") || entity.getCommandSenderName().equalsIgnoreCase(target)) {
+                    worldObj.createExplosion(null, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, 3.0F, true);
+                    break;
+                }
+            }
+        }
+    }
+    /*
     @Override
     public void updateEntity()
     {
         if (timer > 0) timer--;
-        if (timer <= 0 && !worldObj.isRemote)
+        if (timer == 0 && !worldObj.isRemote)
         {
             List<Entity> entities = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord - 1, yCoord - 1, zCoord - 1, xCoord + 2, yCoord + 2, zCoord + 2));
             if (entities.size() > 0)
             {
                 for (Entity entity : entities)
                 {
+                    if(target.equals("") || entity.getCommandSenderName().equalsIgnoreCase(target))
+                    {
+                        worldObj.createExplosion(null, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, 3.0F, true);
+                        break;
+                    }
+                    //
                     if (entity instanceof EntityPlayer)
                     {
                         EntityPlayer player = (EntityPlayer) entity;
-                        if (player.getDisplayName() != owner)
-                        {
-                            worldObj.createExplosion(null, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, 3.0F, true);
-                        }
+                        worldObj.createExplosion(null, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, 3.0F, true);
                     }
+                    //
                 }
 
+            }
+        }
+    }
+    */
+
+    public void setTimer(int value)
+    {
+        timer = value;
+    }
+
+    public int getTimer()
+    {
+        return timer;
+    }
+
+    public String getTarget()
+    {
+        return target;
+    }
+
+    public void setTarget(String target)
+    {
+        this.target = target;
+        markDirty();
+    }
+
+    public void onGuiTextfieldUpdate(int id, String text)
+    {
+        if(id==0)
+        {
+            target = text;
+            markDirty();
+        }
+    }
+
+    public void onGuiButtonPress(int id)
+    {
+        if(id == 0)
+        {
+            if(timer == -1) //If not armed, start arming
+            {
+                timer = 60;
+            }else //If armed, stop being armed
+            {
+                timer=-1;
             }
         }
     }
@@ -95,6 +161,7 @@ public class TileEntityCamoMine extends TileEntityFP implements ISidedInventory
     {
         super.readFromNBT(tag);
         timer = tag.getInteger("timer");
+        target = tag.getString("target");
 
         camoStacks = new ItemStack[6];
         NBTTagList camoStackTag = tag.getTagList("camoStacks", 10); //10 is the only Number that works
@@ -116,6 +183,7 @@ public class TileEntityCamoMine extends TileEntityFP implements ISidedInventory
     {
         super.writeToNBT(tag);
         tag.setInteger("timer", timer);
+        tag.setString("target",target);
 
         NBTTagList camoStackTag = new NBTTagList();
         for (int i = 0; i < camoStacks.length; i++)

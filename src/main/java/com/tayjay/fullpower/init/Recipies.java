@@ -2,6 +2,8 @@ package com.tayjay.fullpower.init;
 
 /**
  * Created by Taylar on 01/09/2015.
+ *
+ * Make the Recipies for the mod.
  */
 public class Recipies
 {

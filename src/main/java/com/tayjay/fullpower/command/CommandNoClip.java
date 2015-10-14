@@ -48,15 +48,16 @@ public class CommandNoClip extends CommandBase
             if(!entityPlayer.worldObj.isRemote)
             {
                 ChatHelper.send("THE WORLD IS NOT REMOTE");
-                NoClipHandler.setNoClip(entityPlayer,entityPlayer.noClip);
+                NoClipHandler.setNoClip(entityPlayerMP,entityPlayerMP.noClip);
 
             }else{
                 ChatHelper.send("THE WORLD IS REMOTE");
 
-                NoClipHandler.setNoClip(entityPlayer,!entityPlayer.noClip);
-                NoClipHandler.setNoClip(entityPlayerMP,!entityPlayerMP.noClip);
+                NoClipHandler.setNoClip(entityPlayer,!entityPlayer.noClip); //Set No Clip for the local player
+                NoClipHandler.setNoClip(entityPlayerMP,!entityPlayerMP.noClip); //Set No Clip for the MP player
             }
-        ChatHelper.send("NoClip: " + entityPlayerMP.noClip);
+        ChatHelper.send("NoClip MP: " + entityPlayerMP.noClip);
+        ChatHelper.send("NoClip Local: " + entityPlayer.noClip);
 
         //mc.theWorld.getPlayerEntityByName(player.getCommandSenderName()).noClip = true;
         //NoClipHandler.setNoClip(entityPlayer,!entityPlayer.noClip);
