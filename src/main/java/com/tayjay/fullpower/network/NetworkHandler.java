@@ -21,6 +21,8 @@ public class NetworkHandler
 
         INSTANCE.registerMessage(MessageExplode.class,MessageExplode.class,0, Side.SERVER);
         INSTANCE.registerMessage(MessageHandleGuiButtonPress.class,MessageHandleGuiButtonPress.class,1,Side.SERVER);
+        INSTANCE.registerMessage(MessageHandleTextUpdate.class,MessageHandleTextUpdate.class,2,Side.SERVER);
+        INSTANCE.registerMessage(MessageHandleTextUpdate.class, MessageHandleTextUpdate.class, 3, Side.CLIENT);
     }
 
     public static void sendToServer(IMessage message)

@@ -24,6 +24,7 @@ public class MessageHandleTextUpdate extends MessageXYZ<MessageHandleTextUpdate>
         super(te);
         this.id = id;
         this.text = text;
+
     }
 
     @Override

@@ -58,7 +58,7 @@ public class GuiCamoMine extends GuiFP
         if(id == 0)
         {
             textbox.setText(te.getTarget());
-
+            te.setTarget(textbox.getText());
         }
     }
 

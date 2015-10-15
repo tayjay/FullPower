@@ -15,6 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,8 +24,9 @@ import java.util.List;
 public class TileEntityCamoMine extends TileEntityFP implements ISidedInventory
 {
     private int timer = 60;
-    private String target;
+    private String target = "";
     private ItemStack[] camoStacks = new ItemStack[6];
+    public static List<ItemStack> camoflaugeBlackList = new ArrayList<ItemStack>();
 
     public TileEntityCamoMine()
     {
@@ -39,7 +41,7 @@ public class TileEntityCamoMine extends TileEntityFP implements ISidedInventory
             List<Entity> entities = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord - 1, yCoord - 1, zCoord - 1, xCoord + 2, yCoord + 2, zCoord + 2));
             for(Entity entity : entities) {
                 if(target.equals("") || entity.getCommandSenderName().equalsIgnoreCase(target)) {
-                    worldObj.createExplosion(null, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, 3.0F, true);
+                    //worldObj.createExplosion(null, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, 3.0F, true);
                     break;
                 }
             }
@@ -332,6 +334,10 @@ public class TileEntityCamoMine extends TileEntityFP implements ISidedInventory
      */
     public boolean isItemValidForSlot(int slot, ItemStack stack)
     {
+        for(ItemStack blacklistedStack : camoflaugeBlackList)
+        {
+            if(blacklistedStack.isItemEqual(stack)) return false;
+        }
         return stack != null && stack.getItem() instanceof ItemBlock; // Only allow blocks in the inventory.
     }
 

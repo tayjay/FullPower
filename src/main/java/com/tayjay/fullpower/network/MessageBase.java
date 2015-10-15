@@ -21,14 +21,24 @@ public abstract class MessageBase<REQ extends IMessage> implements IMessage, IMe
         {
             handleServerSide(message, ctx.getServerHandler().playerEntity);
         }else{
-            handleClientSide(message, null);
+            handleClientSide(message, FullPower.proxy.getClientPlayer());
         }
         return null;
     }
 
 
+    /**
+     * Handle a packet on the Server Side. Note this occurs after decoding has completed.
+     * @param message
+     * @param player
+     */
     public abstract void handleServerSide(REQ message, EntityPlayer player);
 
+    /**
+     * Handle a packet on the Client Side. Note this occus after decoding has completed.
+     * @param message
+     * @param player
+     */
     public abstract void handleClientSide(REQ message, EntityPlayer player);
 
 }

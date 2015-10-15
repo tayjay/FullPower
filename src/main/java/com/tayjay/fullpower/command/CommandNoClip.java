@@ -1,5 +1,6 @@
 package com.tayjay.fullpower.command;
 
+import com.tayjay.fullpower.FullPower;
 import com.tayjay.fullpower.client.handler.NoClipHandler;
 import com.tayjay.fullpower.util.ChatHelper;
 import com.tayjay.fullpower.util.LogHelper;
@@ -43,7 +44,8 @@ public class CommandNoClip extends CommandBase
         //NoClipHandler noClipHandler = new NoClipHandler();
 
         EntityPlayerMP entityPlayerMP = args.length == 0 ? getCommandSenderAsPlayer(player) : getPlayer(player, args[0]);
-        EntityPlayer entityPlayer = mc.theWorld.getPlayerEntityByName(entityPlayerMP.getCommandSenderName());
+        EntityPlayer entityPlayer = FullPower.proxy.getClientPlayer();
+        //EntityPlayer entityPlayer = mc.theWorld.getPlayerEntityByName(entityPlayerMP.getCommandSenderName());
 
             if(!entityPlayer.worldObj.isRemote)
             {

@@ -31,14 +31,14 @@ public class MessageExplode extends MessageBase<MessageExplode>
     @Override
     public void toBytes(ByteBuf buf)
     {
-        buf.writeFloat(explosionSize);
+        //buf.writeFloat(explosionSize);
         //ByteBufUtils
     }
 
     @Override
     public void handleServerSide(MessageExplode message, EntityPlayer player)
     {
-        player.worldObj.createExplosion(player,player.posX,player.posY,player.posZ,message.explosionSize, true);
+        //player.worldObj.createExplosion(player,player.posX,player.posY,player.posZ,message.explosionSize, true);
     }
 
     @Override

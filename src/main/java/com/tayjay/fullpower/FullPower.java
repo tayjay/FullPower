@@ -7,6 +7,7 @@ import com.tayjay.fullpower.client.handler.NoClipHandler;
 import com.tayjay.fullpower.command.CommandChat;
 import com.tayjay.fullpower.command.CommandNoClip;
 import com.tayjay.fullpower.command.CommandPing;
+import com.tayjay.fullpower.event.EventHandlerFP;
 import com.tayjay.fullpower.handler.ConfigHandler;
 import com.tayjay.fullpower.handler.TickHandler;
 import com.tayjay.fullpower.init.ModBlocks;
@@ -18,15 +19,16 @@ import com.tayjay.fullpower.network.NetworkHandler;
 import com.tayjay.fullpower.proxy.CommonProxy;
 import com.tayjay.fullpower.proxy.IProxy;
 import com.tayjay.fullpower.reference.Reference;
+import com.tayjay.fullpower.tileentity.TileEntityCamoMine;
+import com.tayjay.fullpower.tileentity.TileEntityFP;
 import com.tayjay.fullpower.util.LogHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 
 
@@ -84,10 +86,14 @@ public class FullPower
         ModBlocks.init();
         ModTileEntities.init();
 
+        MinecraftForge.EVENT_BUS.register(new EventHandlerFP());
+        FMLCommonHandler.instance().bus().register(new EventHandlerFP());
+
         NetworkHandler.preInit();
         DescriptionHandler.init();
-        NetworkRegistry.INSTANCE.registerGuiHandler(instance,new GuiHandler());
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
+        FMLInterModComms.sendMessage(Reference.MOD_ID, "camoMineBlackList",new ItemStack(Blocks.stone));
         LogHelper.info("Pre-Initialization Complete!");
     }
 
@@ -121,5 +127,45 @@ public class FullPower
     {
 
         LogHelper.info("Post-Initialization Complete!");
+    }
+
+    /**
+     * Receive Inter-Mod Communications. Must be in the @Mod class.
+     * <br>
+     * Called between Init and Post-Init events.
+     * @param event
+     */
+    @Mod.EventHandler
+    public void onIMCMessages(FMLInterModComms.IMCEvent event)
+    {
+        LogHelper.info("Receiving IMC");
+        for(FMLInterModComms.IMCMessage message : event.getMessages())
+        {
+            if(message.key.equalsIgnoreCase("camoMineBlackList"))
+            {
+                if(message.isItemStackMessage())
+                {
+                    ItemStack blacklistedStack = message.getItemStackValue();
+                    if (blacklistedStack.getItem() != null)
+                    {
+                        TileEntityCamoMine.camoflaugeBlackList.add(blacklistedStack);
+                        LogHelper.info(String.format("Mod %s added %s to the blacklisted as camoflauge for the Camo Mine", message.getSender(), blacklistedStack.toString())); //Only for debugging, not recommended
+                    }
+                    else
+                    {
+                        throw new IllegalStateException(String.format("ItemStack tried to be used in registry by the mod %s has a null item.", message.getSender()));
+                    }
+                }
+                else
+                {
+                    LogHelper.warn(String.format("Mod %s sent a non-ItemStack message, where an ItemStack was expected.",message.getSender()));
+                }
+            }
+            else
+            {
+                LogHelper.warn(String.format("Mod %s used an invalid IMC key: %s",message.getSender(),message.key));
+            }
+
+        }
     }
 }
