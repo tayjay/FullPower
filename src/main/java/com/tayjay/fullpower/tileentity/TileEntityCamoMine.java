@@ -41,7 +41,7 @@ public class TileEntityCamoMine extends TileEntityFP implements ISidedInventory
             List<Entity> entities = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord - 1, yCoord - 1, zCoord - 1, xCoord + 2, yCoord + 2, zCoord + 2));
             for(Entity entity : entities) {
                 if(target.equals("") || entity.getCommandSenderName().equalsIgnoreCase(target)) {
-                    //worldObj.createExplosion(null, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, 3.0F, true);
+                    worldObj.createExplosion(null, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, 3.0F, true);
                     break;
                 }
             }

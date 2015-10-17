@@ -36,5 +36,6 @@ public final class Names
     public static final class TileEntities
     {
         public static final String CAMO_MINE=Reference.MOD_ID+":camoMine";
+        public static final String CHAT_BOX=Reference.MOD_ID+":chatBox";
     }
 }

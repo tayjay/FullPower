@@ -93,7 +93,9 @@ public class FullPower
         DescriptionHandler.init();
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
-        FMLInterModComms.sendMessage(Reference.MOD_ID, "camoMineBlackList",new ItemStack(Blocks.stone));
+        FMLInterModComms.sendMessage(Reference.MOD_ID, "camoMineBlackList", new ItemStack(Blocks.stone));
+        //Register this mod with WAILA
+        FMLInterModComms.sendMessage("Waila","register","com.tayjay.fullpower.thridparty.waila.Waila.onWailaCall");
         LogHelper.info("Pre-Initialization Complete!");
     }
 
