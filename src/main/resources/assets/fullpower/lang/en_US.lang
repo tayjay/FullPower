@@ -7,7 +7,7 @@ keys.fullpower.release=Release
 keys.fullpower.explode=Explode
 
 #Creative Tabs Localizations
-itemGroup.fullpower= Full Power
+itemGroup.fullpower=Full Power
 
 # Item Localization
 item.fullpower:debugTool.name=Debug Tool

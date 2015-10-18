@@ -31,6 +31,13 @@ public final class Names
         public static final String DEBUG_TOOL = "debugTool";
         public static final String EFFECT_TOOL = "effectTool";
         public static final String INSTANT_TOOL = "instantTool";
+        public static final String CARD = "card";
+    }
+
+    public static final class Cards
+    {
+        public static final String STONE_BLOCK="Stone Block";
+        public static final String GRASS_BLOCK="Grass Block";
     }
 
     public static final class TileEntities

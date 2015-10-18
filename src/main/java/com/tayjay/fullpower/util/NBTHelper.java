@@ -43,7 +43,6 @@ public class NBTHelper
         {
             setLong(itemStack, keyName, 0);
         }
-
         return itemStack.stackTagCompound.getLong(keyName);
     }
 

@@ -1,5 +1,6 @@
 package com.tayjay.fullpower;
 
+import com.tayjay.fullpower.cards.CardRegistry;
 import com.tayjay.fullpower.client.gui.RenderTick;
 import com.tayjay.fullpower.client.handler.KeyInputEventHandler;
 import com.tayjay.fullpower.client.handler.KeyInputHandler;
@@ -80,6 +81,7 @@ public class FullPower
         ConfigHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigHandler());
 
+        CardRegistry.init();
         //proxy.registerKeyBindings();
         proxy.preInit();
         ModItems.init();

@@ -21,6 +21,7 @@ public class ModItems
     public static ItemFP effectTool;
     public static ItemFP commandScroll;
     public static ItemFP instantTool;
+    public static ItemFP card;
 
     /**
      * Initiate the Item objects
@@ -31,6 +32,7 @@ public class ModItems
         effectTool = new ItemEffectTool();
         commandScroll = new ItemCommandScroll();
         instantTool = new ItemInstantTool();
+        card = new ItemCard();
         /*
         GameRegistry.registerItem(debugTool, "debugTool");
         GameRegistry.registerItem(effectTool, "effectTool");
