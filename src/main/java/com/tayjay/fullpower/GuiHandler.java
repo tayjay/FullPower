@@ -1,9 +1,11 @@
 package com.tayjay.fullpower;
 
 import com.tayjay.fullpower.gui.GuiCamoMine;
+import com.tayjay.fullpower.gui.GuiCard;
 import com.tayjay.fullpower.gui.GuiChatBox;
 import com.tayjay.fullpower.inventory.ContainerCamoMine;
 import com.tayjay.fullpower.inventory.ContainerChatBox;
+import com.tayjay.fullpower.inventory.ContainerEmpty;
 import com.tayjay.fullpower.tileentity.TileEntityCamoMine;
 import com.tayjay.fullpower.tileentity.TileEntityChatBox;
 import com.tayjay.fullpower.util.LogHelper;
@@ -18,7 +20,8 @@ public class GuiHandler implements IGuiHandler
 {
     public enum GuiIDs{
         CAMO_MINE,
-        CHAT_BOX
+        CHAT_BOX,
+        CARD
     }
 
     @Override
@@ -30,6 +33,8 @@ public class GuiHandler implements IGuiHandler
                 return new ContainerCamoMine(player.inventory, (TileEntityCamoMine)world.getTileEntity(x,y,z));
             case CHAT_BOX:
                 return new ContainerChatBox((TileEntityChatBox) world.getTileEntity(x,y,z));
+            case CARD:
+                return new ContainerEmpty();
         }
         throw new IllegalArgumentException("No Container with id "+ ID);
     }
@@ -43,6 +48,8 @@ public class GuiHandler implements IGuiHandler
                 return new GuiCamoMine(player.inventory, (TileEntityCamoMine)world.getTileEntity(x,y,z));
             case CHAT_BOX:
                 return new GuiChatBox(player, (TileEntityChatBox)world.getTileEntity(x,y,z));
+            case CARD:
+                return new GuiCard(player,"card");
         }
         throw new IllegalArgumentException("No GUI with id "+ ID);
     }

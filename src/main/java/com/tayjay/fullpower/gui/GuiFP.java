@@ -3,6 +3,7 @@ package com.tayjay.fullpower.gui;
 import com.tayjay.fullpower.inventory.ContainerCamoMine;
 import com.tayjay.fullpower.reference.Reference;
 import com.tayjay.fullpower.tileentity.TileEntityCamoMine;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -50,4 +51,5 @@ public abstract class GuiFP extends GuiContainer
     {
 
     }
+
 }

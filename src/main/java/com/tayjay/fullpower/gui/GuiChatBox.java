@@ -1,13 +1,17 @@
 package com.tayjay.fullpower.gui;
 
+import com.tayjay.fullpower.init.ModBlocks;
 import com.tayjay.fullpower.inventory.ContainerChatBox;
 import com.tayjay.fullpower.network.MessageHandleTextUpdate;
 import com.tayjay.fullpower.network.NetworkHandler;
 import com.tayjay.fullpower.tileentity.TileEntityChatBox;
+import com.tayjay.fullpower.util.ItemUtil;
 import com.tayjay.fullpower.util.LogHelper;
+import com.tayjay.fullpower.util.RenderHelper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 
 /**
@@ -115,6 +119,8 @@ public class GuiChatBox extends GuiFP
         GL11.glDisable(GL11.GL_BLEND);
         this.nameField.drawTextBox();
         this.messageField.drawTextBox();
+
+        RenderHelper.drawItemStack(new ItemStack(ModBlocks.chatBox),guiLeft/3-16,guiTop/3,"");
     }
 
     @Override

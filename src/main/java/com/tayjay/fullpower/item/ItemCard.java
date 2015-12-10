@@ -1,5 +1,7 @@
 package com.tayjay.fullpower.item;
 
+import com.tayjay.fullpower.FullPower;
+import com.tayjay.fullpower.GuiHandler;
 import com.tayjay.fullpower.cards.Card;
 import com.tayjay.fullpower.cards.CardRegistry;
 import com.tayjay.fullpower.init.ModItems;
@@ -109,6 +111,10 @@ public class ItemCard extends ItemFP
         {
             Random rand = new Random();
             NBTHelper.setInteger(itemStack, "id", rand.nextInt(2));
+        }
+        if(world.isRemote)
+        {
+            entityPlayer.openGui(FullPower.instance, GuiHandler.GuiIDs.CARD.ordinal(),world,(int)entityPlayer.posX,(int)entityPlayer.posY,(int)entityPlayer.posZ);
         }
         return super.onItemRightClick(itemStack, world, entityPlayer);
     }

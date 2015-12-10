@@ -23,6 +23,7 @@ import com.tayjay.fullpower.reference.Reference;
 import com.tayjay.fullpower.tileentity.TileEntityCamoMine;
 import com.tayjay.fullpower.tileentity.TileEntityFP;
 import com.tayjay.fullpower.util.LogHelper;
+import com.tayjay.fullpower.util.RenderHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -113,6 +114,7 @@ public class FullPower
 
         Recipies.init();
         MinecraftForge.EVENT_BUS.register(new NoClipHandler()); // Handle Inside Block
+        MinecraftForge.EVENT_BUS.register(new TickHandler());
         FMLCommonHandler.instance().bus().register(new NoClipHandler());
         FMLCommonHandler.instance().bus().register(new TickHandler());
         FMLCommonHandler.instance().bus().register(new KeyInputHandler());
@@ -129,6 +131,7 @@ public class FullPower
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
+        RenderHelper.init();
 
         LogHelper.info("Post-Initialization Complete!");
     }

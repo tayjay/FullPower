@@ -23,6 +23,7 @@ public class ModBlocks
     public static BlockFP diamondGold;
     public static BlockFP camoMine;
     public static BlockFP chatBox;
+    public static BlockFP fireControl;
 
     /**
      * Initiate each block object
@@ -33,6 +34,7 @@ public class ModBlocks
         diamondGold = new BlockDiamondGold();
         camoMine = new BlockCamoMine();
         chatBox = new BlockChatBox();
+        fireControl = new BlockFireControl();
 
         //GameRegistry.registerBlock(areaEffect, "areaEffect");
     }

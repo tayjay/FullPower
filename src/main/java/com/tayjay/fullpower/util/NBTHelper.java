@@ -1,16 +1,32 @@
 package com.tayjay.fullpower.util;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 
 /**
  * Created by Taylar on 01/09/2015.
  */
 public class NBTHelper
 {
+    /*
+        Setting NBTTags for ItemStacks. /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     */
     public static boolean hasTag(ItemStack itemStack, String keyName)
     {
         return itemStack != null && itemStack.stackTagCompound != null && itemStack.stackTagCompound.hasKey(keyName);
+    }
+    public static boolean hasTag(ItemStack stack)
+    {
+        return stack.hasTagCompound();
+    }
+
+    public static NBTTagCompound getTag(ItemStack stack)
+    {
+        if(!stack.hasTagCompound())
+            stack.setTagCompound(new NBTTagCompound());
+        return stack.getTagCompound();
     }
 
     public static void removeTag(ItemStack itemStack, String keyName)
@@ -188,5 +204,62 @@ public class NBTHelper
         initNBTTagCompound(itemStack);
 
         itemStack.stackTagCompound.setDouble(keyName, keyValue);
+    }
+
+    /*
+    public static void setItemArray(ItemStack itemStack, String key,ItemStack[] items)
+    {
+        NBTTagCompound[] tag = new NBTTagCompound[items.length];
+
+        int i;
+        for (i = 0; i < items.length; i++) {
+            tag[i] = new NBTTagCompound();
+
+            if (items[i] != null) {
+                tag[i] = items[i].writeToNBT(tag[i]);
+            }
+
+            itemStack.stackTagCompound.setTag(key + i, tag[i]);
+        }
+        setInteger(itemStack,"totalItems",i);
+    }
+    */
+
+    public static void setItemStack(ItemStack itemStack, String keyName, ItemStack targetStack)
+    {
+        NBTTagList itemlist = new NBTTagList();
+
+        if (targetStack != null)
+        {
+            NBTTagCompound tag = new NBTTagCompound();
+
+            //tag.setByte("Slot", (byte)i);
+            targetStack.writeToNBT(tag);
+            itemlist.appendTag(tag);
+        }
+    }
+
+    public static ItemStack getItemStack(ItemStack itemStack, String keyName)
+    {
+        NBTTagList tagList = itemStack.getTagCompound().getTagList(keyName,9);
+
+        NBTTagCompound tag = tagList.getCompoundTagAt(0);
+
+        return ItemStack.loadItemStackFromNBT(tag);
+    }
+
+
+    public static void setIntArray(ItemStack itemStack, String keyName, int[] array)
+    {
+        setString(itemStack, keyName, ArrayHelper.arrayToString(array));
+    }
+
+    public static void setTagCompound(ItemStack stack, String key, NBTTagCompound val)
+    {
+        getTag(stack).setTag(key, val);
+    }
+    public static NBTTagCompound getTagCompound(ItemStack stack, String key)
+    {
+        return hasTag(stack) ? getTag(stack).getCompoundTag(key) : new NBTTagCompound();
     }
 }

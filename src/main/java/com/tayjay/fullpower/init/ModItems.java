@@ -8,7 +8,6 @@ import net.minecraft.item.Item;
 /**
  * Created by Taylar on 30/08/2015.
  *
- * UNLOCALIZE THIS!
  */
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID) //Stop other people from messing with your item registry
@@ -22,6 +21,8 @@ public class ModItems
     public static ItemFP commandScroll;
     public static ItemFP instantTool;
     public static ItemFP card;
+    public static ItemFP useEnergy;
+    public static ItemFP deckOfManyThings;
 
     /**
      * Initiate the Item objects
@@ -33,6 +34,8 @@ public class ModItems
         commandScroll = new ItemCommandScroll();
         instantTool = new ItemInstantTool();
         card = new ItemCard();
+        useEnergy = new ItemUseEnergy();
+        deckOfManyThings = new ItemDeckOfManyThings();
         /*
         GameRegistry.registerItem(debugTool, "debugTool");
         GameRegistry.registerItem(effectTool, "effectTool");

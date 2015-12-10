@@ -29,7 +29,8 @@ public class ChatHelper
     {
         if(player!=null)
         {
-            player.addChatComponentMessage(new ChatComponentText(msg));
+            player.addChatMessage(new ChatComponentText(msg));
+            //player.addChatComponentMessage(new ChatComponentText(msg));
         }
     }
 }

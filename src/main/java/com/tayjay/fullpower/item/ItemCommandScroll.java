@@ -2,9 +2,7 @@ package com.tayjay.fullpower.item;
 
 import com.tayjay.fullpower.init.ModItems;
 import com.tayjay.fullpower.reference.Names;
-import com.tayjay.fullpower.util.ChatHelper;
-import com.tayjay.fullpower.util.LogHelper;
-import com.tayjay.fullpower.util.NBTHelper;
+import com.tayjay.fullpower.util.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,6 +16,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.WorldInfo;
+import net.minecraftforge.client.IItemRenderer;
 
 import java.util.List;
 import java.util.Random;
@@ -115,7 +114,6 @@ public class ItemCommandScroll extends ItemFP
 
                 } else
                 {
-
                     NBTHelper.setBoolean(itemStack, "isSet", true);
                     LogHelper.info("Entered Else"); // DEBUG
                     ChatHelper.send(entityPlayer, EnumChatFormatting.BLUE + "The scroll reveals its true power!");
@@ -284,4 +282,6 @@ public class ItemCommandScroll extends ItemFP
             MinecraftServer.getServer().worldServers[j].setWorldTime(time);
         }
     }
+
+
 }

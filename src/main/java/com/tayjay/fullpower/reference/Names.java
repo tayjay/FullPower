@@ -9,6 +9,7 @@ import com.sun.org.apache.xml.internal.serializer.utils.StringToIntTable;
  */
 public final class Names
 {
+
     public static final class Keys
     {
         public static final String CATEGORY = "keys.fullpower.category";
@@ -32,6 +33,8 @@ public final class Names
         public static final String EFFECT_TOOL = "effectTool";
         public static final String INSTANT_TOOL = "instantTool";
         public static final String CARD = "card";
+        public static final String USE_ENERGY = "useEnergy";
+        public static final String DECK_OF_MANY_THINGS="deckOfManyThings";
     }
 
     public static final class Cards
@@ -44,5 +47,8 @@ public final class Names
     {
         public static final String CAMO_MINE=Reference.MOD_ID+":camoMine";
         public static final String CHAT_BOX=Reference.MOD_ID+":chatBox";
+        public static final String FIRE_CONTROL=Reference.MOD_ID+":fireControl";
     }
 }
+
+

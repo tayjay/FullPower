@@ -73,7 +73,7 @@ public class TileEntityChatBox extends TileEntityFP implements IInventory
         }
         else
         {
-            LogHelper.warn("Invalid TextField id in TileEntityChatBox: " + id);
+            LogHelper.error("Invalid TextField id in TileEntityChatBox: " + id);
         }
     }
 

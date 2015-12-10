@@ -1,8 +1,10 @@
 package com.tayjay.fullpower.item;
 
+import codechicken.core.ClientUtils;
 import com.tayjay.fullpower.init.ModItems;
 import com.tayjay.fullpower.reference.Names;
 import com.tayjay.fullpower.util.ChatHelper;
+import com.tayjay.fullpower.util.ClientUtil;
 import com.tayjay.fullpower.util.LogHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -43,10 +45,14 @@ public class ItemDebugTool extends ItemFP
      */
     public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entity)
     {
+        ChatHelper.send(entity, "Is Client: " + ClientUtils.isClient());
+
 
         MinecraftServer server = MinecraftServer.getServer();
         if (coolDown == 0)
         {
+
+            /*
             ChatHelper.send(entity, entity.toString());
             if (entity instanceof EntityClientPlayerMP)
             {
@@ -68,6 +74,7 @@ public class ItemDebugTool extends ItemFP
             {
                 ChatHelper.send(entity, "Entity not instance of EntityPlayerSP");
             }
+            */
 
 
 

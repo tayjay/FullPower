@@ -14,6 +14,7 @@ item.fullpower:debugTool.name=Debug Tool
 item.fullpower:effectTool.name=Effect Tool
 item.fullpower:commandScroll.name=§6§lCommand Scroll§r
 item.fullpower:instantTool.name=Instant-Mining Tool
+item.fullpower:deckOfManyThings.name=Deck of Many Things
 
 #Block Localization
 tile.fullpower:areaEffect.name=Area Effect
@@ -25,3 +26,4 @@ tile.fullpower:chatBox.name=Chat Box
 gui.fullpower.camoMine.timer=Timer:%s ticks
 gui.fullpower.camoMine.button.reset=Reset
 gui.fullpower.camoMine.button.restart=Restart
+
