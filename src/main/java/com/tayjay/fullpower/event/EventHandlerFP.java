@@ -13,14 +13,23 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ibxm.Player;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.EntityLookHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraftforge.client.IItemRenderer;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.entity.EntityEvent;
@@ -66,12 +75,44 @@ public class EventHandlerFP
     }
 
 
+    public void playerRenderEvent(RenderPlayerEvent event)
+    {
+        event.setCanceled(true);
+
+    }
+
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void playerRenderEventPre(RenderPlayerEvent.Pre event)
     {
-        /*
+
         //event.setCanceled(true);
+        EntityPlayer player = event.entityPlayer;
+        RenderManager renderManager = RenderManager.instance;
+        ItemStack itemstack = new ItemStack(Items.diamond_sword);
+        ItemRenderer itemRenderer = new ItemRenderer(Minecraft.getMinecraft());
+        GL11.glPushMatrix();
+        //GL11.glTranslatef(0.6f,0.6f,0.6f);
+
+        //player.setPositionAndRotation(player.posX, player.posY, player.posZ, player.rotationYaw, -player.rotationPitch);
+
+        GL11.glRotatef(player.rotationYawHead, 0,-1,0);
+        //GL11.glRotatef(45,0,-1,0);
+
+        GL11.glRotatef(player.rotationPitch, 1, 0, 0);
+        //GL11.glRotatef(15,1,0,0);
+
+        GL11.glRotatef(45, 0,1,0);
+        GL11.glTranslatef(0.25f,-0.2f,-0.2f);
+
+        /*
+        GlStateManager.rotate(rotationYaw, 0.0F, -1.0F, 0.0F);
+        GlStateManager.rotate(rotationPitch, -1.0F, 0.0F, 0.0F);
+        GlStateManager.rotate(rotationRoll, 0.0F, 0.0F, 1.0F);
+        */
+        itemRenderer.renderItem(player, itemstack, 0, IItemRenderer.ItemRenderType.ENTITY);
+        GL11.glPopMatrix();
+        /*
         //LogHelper.info("Player " + event.entityPlayer);
 
         //event.entityPlayer.eyeHeight = 10.0F;
@@ -86,6 +127,8 @@ public class EventHandlerFP
 
         //scalePlayer(false);
     }
+
+
 
     @SubscribeEvent
     @SideOnly(Side.CLIENT)

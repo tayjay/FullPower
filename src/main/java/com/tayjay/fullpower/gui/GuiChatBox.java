@@ -120,7 +120,7 @@ public class GuiChatBox extends GuiFP
         this.nameField.drawTextBox();
         this.messageField.drawTextBox();
 
-        RenderHelper.drawItemStack(new ItemStack(ModBlocks.chatBox),guiLeft/3-16,guiTop/3,"");
+        RenderHelper.drawItemStack(new ItemStack(ModBlocks.chatBox),guiLeft,guiTop,"");
     }
 
     @Override
